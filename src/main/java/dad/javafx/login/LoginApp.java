@@ -29,6 +29,8 @@ public class LoginApp extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		
+		System.out.println(Thread.currentThread());
+		
 		this.primaryStage = primaryStage;
 
 		userLabel = new Label("Usuario:");
@@ -72,6 +74,12 @@ public class LoginApp extends Application {
 		primaryStage.show();
 		
 	}
+	
+	@Override
+	public void stop() throws Exception {
+		super.stop();
+		System.out.println("Parando JavaFX");
+	}
 
 	private void onLoginButtonAction(ActionEvent e) {
 		String username = userText.getText();
@@ -89,6 +97,7 @@ public class LoginApp extends Application {
 		alert.showAndWait();
 		
 		Platform.exit();
+		
 	}
 
 	public static void main(String[] args) {
